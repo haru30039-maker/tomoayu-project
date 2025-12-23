@@ -486,50 +486,6 @@
             font-size: 1.1rem;
         }
 
-        /* 活動写真ギャラリー */
-        .gallery {
-            background: var(--cream);
-        }
-
-        .gallery-intro {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            margin-bottom: 2rem;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-item {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-            max-width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-item img {
-                height: 250px;
-            }
-        }
-
         /* 参加の流れ */
         .flow {
             background: var(--white);
@@ -718,6 +674,33 @@
             }
 
             .hero {
+                min-height: 100vh;
+                padding: 2rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                line-height: 1.4;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .concerns-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .concern-card {
                 padding: 2rem 1.5rem;
             }
 
@@ -725,8 +708,68 @@
                 padding: 2rem 1.5rem;
             }
 
+            .about-text {
+                font-size: 1.1rem;
+            }
+
+            .highlight-box {
+                font-size: 1.2rem;
+                padding: 2rem 1.5rem;
+            }
+
+            .difference-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .difference-item {
+                padding: 1rem;
+            }
+
             .project-card {
                 padding: 2rem 1.5rem;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .project-number {
+                font-size: 2.5rem;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+
+            .project-description {
+                font-size: 1.05rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .benefit-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .voice-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .voice-quote {
+                font-size: 1.1rem;
+                padding-left: 0.5rem;
+            }
+
+            .voice-quote::before {
+                font-size: 3rem;
+                top: 0.5rem;
+                left: 1rem;
             }
 
             .flow-step {
@@ -737,20 +780,84 @@
 
             .step-number {
                 min-width: auto;
+                font-size: 2.5rem;
+            }
+
+            .step-content h3 {
+                font-size: 1.4rem;
+            }
+
+            .step-content p {
+                font-size: 1.05rem;
+            }
+
+            .faq-item {
+                padding: 2rem 1.5rem;
+            }
+
+            .faq-question {
+                font-size: 1.1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .faq-answer {
+                font-size: 1.05rem;
+                padding-left: 0;
+            }
+
+            .final-cta {
+                padding: 4rem 1.5rem;
+            }
+
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+
+            .final-cta p {
+                font-size: 1.1rem;
             }
 
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
             }
 
             .cta-primary, .cta-secondary {
                 width: 100%;
-                max-width: 300px;
+                max-width: 320px;
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
             }
 
-            .concern-card, .benefit-card, .faq-item {
-                padding: 1.5rem;
+            .cta-button {
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* 小さいスマホ対応 */
+        @media (max-width: 390px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .difference-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-number {
+                font-size: 2rem;
+            }
+
+            .project-title {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -1073,34 +1180,6 @@
                 イベントを作り上げた達成感は、今でも忘れられない。
             </p>
             <p class="voice-author">— プロジェクトメンバー</p>
-        </div>
-    </section>
-
-    <!-- 活動写真ギャラリー -->
-    <section class="gallery">
-        <h2 class="section-title">活動の様子</h2>
-        <p class="gallery-intro">
-            安芸太田祭、青春祭、研修の様子…みんなで成長している瞬間
-        </p>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="akiota.jpg" alt="安芸太田祭">
-            </div>
-            <div class="gallery-item">
-                <img src="seishun-1.jpg" alt="青春祭">
-            </div>
-            <div class="gallery-item">
-                <img src="seishun-2.jpg" alt="青春祭">
-            </div>
-            <div class="gallery-item">
-                <img src="kenshu-1.jpg" alt="研修の様子">
-            </div>
-            <div class="gallery-item">
-                <img src="kenshu-2.jpg" alt="研修の様子">
-            </div>
-            <div class="gallery-item">
-                <img src="members.jpg" alt="メンバー集合写真">
-            </div>
         </div>
     </section>
 

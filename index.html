@@ -30,6 +30,14 @@
             background: var(--cream);
             line-height: 1.8;
             overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
         }
 
         /* ファーストビュー */
@@ -156,6 +164,8 @@
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .section-title {
@@ -511,6 +521,13 @@
             height: 300px;
             object-fit: cover;
             display: block;
+            max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item img {
+                height: 250px;
+            }
         }
 
         /* 参加の流れ */
@@ -696,9 +713,26 @@
 
         /* レスポンシブ */
         @media (max-width: 768px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+
+            .about-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .project-card {
+                padding: 2rem 1.5rem;
+            }
+
             .flow-step {
                 flex-direction: column;
                 text-align: center;
+                padding: 2rem 1.5rem;
             }
 
             .step-number {
@@ -713,6 +747,10 @@
             .cta-primary, .cta-secondary {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .concern-card, .benefit-card, .faq-item {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -777,7 +815,7 @@
                     <circle cx="25" cy="55" r="3" fill="#5EC4E8" opacity="0.5"/>
                     <circle cx="75" cy="55" r="3" fill="#5EC4E8" opacity="0.5"/>
                 </svg>
-                <p class="concern-text">意識高い雰囲気に<br>ついていける自信が<br>ない</p>
+                <p class="concern-text">学びたいけど<br>何からしていけば良いのか<br>わからない</p>
             </div>
         </div>
     </section>
@@ -1081,14 +1119,14 @@
                 <div class="step-number">02</div>
                 <div class="step-content">
                     <h3>カジュアルに話そう</h3>
-                    <p>堅い面接じゃありません。どんなことに興味がある？何をやってみたい？一緒に考えながら、あなたに合ったプロジェクトを見つけます。</p>
+                    <p>堅い面接じゃありません。どんなことに興味がある？何をやってみたい？幹部メンバーからリアルな現状も聞け。</p>
                 </div>
             </div>
             <div class="flow-step">
                 <div class="step-number">03</div>
                 <div class="step-content">
                     <h3>活動スタート</h3>
-                    <p>面談後、すぐに活動開始もOK。プロジェクトメンバー限定の交流会からスタートするのもあり。自分のペースで始められます。</p>
+                    <p>面談後、すぐに活動開始もOK。プロジェクトメンバー限定の交流会からスタートするのもあり。</p>
                 </div>
             </div>
         </div>
@@ -1124,7 +1162,7 @@
                 <span>お金はかかる？</span>
             </div>
             <p class="faq-answer">
-                完全無料です。本来、高額なプロの研修も、WELMIのサポートにより学生は無料で受けられます。
+                完全無料です。本来、有償なプロの研修も、WELMIのサポートにより学生は無料で受けられます。
             </p>
         </div>
 
@@ -1152,7 +1190,7 @@
     <!-- 最終CTA -->
     <section class="final-cta">
         <h2>いまの自分から、<br>一歩前へ</h2>
-        <p>その気持ちがあれば、もう十分。一緒に始めよう</p>
+        <p>その気持ちがあればOK。一緒に始めよう</p>
         <div class="cta-buttons">
             <a href="https://timerex.net/s/nukui.event.staff_92c0/46b227c2/" class="cta-primary">面談を予約する（30分）</a>
             <a href="https://line.me/R/ti/p/@810ihnib" class="cta-secondary">公式LINEに戻る</a>

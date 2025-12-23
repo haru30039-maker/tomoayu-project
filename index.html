@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#ともあゆ プロジェクトメンバー募集</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #FF8C42;
+            --soft-orange: #FFB380;
+            --primary-blue: #5EC4E8;
+            --soft-blue: #A8E0F5;
+            --cream: #FFF5E6;
+            --warm-beige: #F5E6D3;
+            --text-dark: #2C2416;
+            --text-gray: #5C5142;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-dark);
+            background: var(--cream);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ファーストビュー */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--soft-orange) 0%, var(--primary-orange) 50%, var(--primary-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(94, 196, 232, 0.4) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(3deg); }
+            66% { transform: translate(-20px, 20px) rotate(-3deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 3rem;
+            line-height: 1.9;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.6s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--white);
+            color: var(--primary-orange);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.2s forwards, bounce 2s ease-in-out 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* セクション共通スタイル */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* 悩みセクション */
+        .concerns {
+            background: var(--white);
+        }
+
+        .concerns-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            line-height: 1.9;
+        }
+
+        .concerns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .concern-card {
+            background: var(--warm-beige);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .concern-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--soft-blue);
+            box-shadow: 0 10px 30px rgba(94, 196, 232, 0.2);
+        }
+
+        .concern-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .concern-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* プロジェクトメンバーとは */
+        .about {
+            background: linear-gradient(to bottom, var(--cream) 0%, var(--warm-beige) 100%);
+        }
+
+        .about-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 2rem;
+            color: var(--text-gray);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.9;
+        }
+
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .difference-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--warm-beige);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .difference-item:hover {
+            transform: scale(1.05);
+        }
+
+        .difference-label {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .difference-value {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* プロジェクト紹介 */
+        .projects {
+            background: var(--white);
+        }
+
+        .project-card {
+            background: var(--warm-beige);
+            border-radius: 30px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease;
+            border-left: 6px solid var(--primary-orange);
+        }
+
+        .project-card:nth-child(2) {
+            border-left-color: var(--primary-blue);
+        }
+
+        .project-card:nth-child(3) {
+            border-left-color: var(--primary-orange);
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Zen Maru Gothic', sans-serif;
+        }
+
+        .project-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .project-description {
+            font-size: 1.15rem;
+            line-height: 2;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-mission {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .mission-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .mission-label {
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .mission-text {
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
+
+        /* 得られるもの */
+        .benefits {
+            background: var(--cream);
+        }
+
+        .benefits-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            line-height: 1.9;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary-orange);
+        }
+
+        .benefit-card:nth-child(even) {
+            border-top-color: var(--primary-blue);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-text {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-gray);
+        }
+
+        /* メンバーの声 */
+        .voices {
+            background: var(--white);
+        }
+
+        .voice-card {
+            background: var(--warm-beige);
+            padding: 3rem;
+            border-radius: 25px;
+            margin-bottom: 2rem;
+            position: relative;
+            border-left: 6px solid var(--primary-blue);
+        }
+
+        .voice-card:nth-child(odd) {
+            border-left-color: var(--primary-orange);
+        }
+
+        .voice-quote {
+            font-size: 1.3rem;
+            line-height: 2.1;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            padding-left: 1rem;
+        }
+
+        .voice-quote::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-blue);
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-family: Georgia, serif;
+            opacity: 0.3;
+        }
+
+        .voice-author {
+            text-align: right;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.1rem;
+        }
+
+        /* 活動写真ギャラリー */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 参加の流れ */
+        .flow {
+            background: var(--white);
+        }
+
+        .flow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: var(--warm-beige);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border-left: 6px solid var(--primary-orange);
+        }
+
+        .flow-step:nth-child(2) {
+            border-left-color: var(--primary-blue);
+        }
+
+        .flow-step:nth-child(3) {
+            border-left-color: var(--primary-orange);
+        }
+
+        .flow-step:hover {
+            transform: translateX(10px);
+        }
+
+        .step-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Zen Maru Gothic', sans-serif;
+            min-width: 100px;
+        }
+
+        .step-content h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .step-content p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.9;
+        }
+
+        /* よくある質問 */
+        .faq {
+            background: var(--cream);
+        }
+
+        .faq-item {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--soft-blue);
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 5px 20px rgba(94, 196, 232, 0.2);
+        }
+
+        .faq-question {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-q {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .faq-answer {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text-gray);
+            padding-left: 2.5rem;
+        }
+
+        /* CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--soft-orange) 0%, var(--primary-orange) 50%, var(--primary-blue) 100%);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .final-cta h2 {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--white);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 3rem;
+            line-height: 1.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: var(--white);
+            color: var(--primary-orange);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: transparent;
+            color: var(--white);
+            border: 3px solid var(--white);
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        /* フッター */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .flow-step {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-number {
+                min-width: auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-primary, .cta-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ファーストビュー -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">いまの自分から、一歩前へ</p>
+            <h1>変わりたい気持ちを、<br>行動に変える場所</h1>
+            <p class="hero-description">
+                #ともあゆプロジェクトメンバーで、<br>
+                自分らしく成長する
+            </p>
+            <a href="https://timerex.net/s/nukui.event.staff_92c0/46b227c2/" class="cta-button">まずは話を聞いてみる</a>
+        </div>
+        <div class="scroll-indicator">↓ スクロール</div>
+    </section>
+
+    <!-- 悩みセクション -->
+    <section class="concerns">
+        <h2 class="section-title">こんな気持ち、ない？</h2>
+        <p class="concerns-intro">
+            大丈夫。みんな最初はそこからスタートしています
+        </p>
+        <div class="concerns-grid">
+            <div class="concern-card">
+                <svg class="concern-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#FFB380"/>
+                    <path d="M30 55 Q50 65 70 55" stroke="#FF8C42" stroke-width="3" fill="none"/>
+                    <circle cx="35" cy="40" r="5" fill="#FF8C42"/>
+                    <circle cx="65" cy="40" r="5" fill="#FF8C42"/>
+                </svg>
+                <p class="concern-text">ガクチカが欲しい<br>でも何から始めればいいか<br>わからない</p>
+            </div>
+            <div class="concern-card">
+                <svg class="concern-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#A8E0F5"/>
+                    <path d="M30 60 Q50 50 70 60" stroke="#5EC4E8" stroke-width="3" fill="none"/>
+                    <circle cx="35" cy="40" r="5" fill="#5EC4E8"/>
+                    <circle cx="65" cy="40" r="5" fill="#5EC4E8"/>
+                    <path d="M35 30 L30 25 M65 30 L70 25" stroke="#5EC4E8" stroke-width="3"/>
+                </svg>
+                <p class="concern-text">本当は成長したい<br>でも最初の一歩が<br>踏み出せない</p>
+            </div>
+            <div class="concern-card">
+                <svg class="concern-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#FFB380"/>
+                    <path d="M30 55 L70 55" stroke="#FF8C42" stroke-width="3"/>
+                    <circle cx="35" cy="40" r="5" fill="#FF8C42"/>
+                    <circle cx="65" cy="40" r="5" fill="#FF8C42"/>
+                    <path d="M45 70 Q50 75 55 70" stroke="#FF8C42" stroke-width="2" fill="none"/>
+                </svg>
+                <p class="concern-text">自分に自信がない<br>このままじゃダメだと<br>思っている</p>
+            </div>
+            <div class="concern-card">
+                <svg class="concern-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="#A8E0F5"/>
+                    <circle cx="35" cy="42" r="5" fill="#5EC4E8"/>
+                    <circle cx="65" cy="42" r="5" fill="#5EC4E8"/>
+                    <path d="M30 58 Q50 55 70 58" stroke="#5EC4E8" stroke-width="3" fill="none"/>
+                    <circle cx="25" cy="55" r="3" fill="#5EC4E8" opacity="0.5"/>
+                    <circle cx="75" cy="55" r="3" fill="#5EC4E8" opacity="0.5"/>
+                </svg>
+                <p class="concern-text">意識高い雰囲気に<br>ついていける自信が<br>ない</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- プロジェクトメンバーとは -->
+    <section class="about">
+        <h2 class="section-title">#ともあゆプロジェクトメンバーって？</h2>
+        <div class="about-content">
+            <p class="about-text">
+                #ともあゆには、いろんな関わり方があります。<br>
+                イベントを楽しむ「コミュニティメンバー」と、<br>
+                自分の成長のために挑戦する「プロジェクトメンバー」。
+            </p>
+            <div class="highlight-box">
+                「変わりたい」「学びたい」<br>
+                その気持ちがあれば、もう十分
+            </div>
+            <p class="about-text">
+                堅苦しい面接じゃありません。カジュアルな面談で、<br>
+                あなたがどんなことに興味があるか、何をやってみたいかを一緒に考えます。<br>
+                あなたに合ったプロジェクトを見つけるための、気軽な時間です。
+            </p>
+            <div class="difference-grid">
+                <div class="difference-item">
+                    <p class="difference-label">スキル・経験</p>
+                    <p class="difference-value">不要</p>
+                </div>
+                <div class="difference-item">
+                    <p class="difference-label">学年</p>
+                    <p class="difference-value">問わない</p>
+                </div>
+                <div class="difference-item">
+                    <p class="difference-label">参加費</p>
+                    <p class="difference-value">無料</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- プロジェクト紹介 -->
+    <section class="projects">
+        <h2 class="section-title">選べる3つのプロジェクト</h2>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">01</span>
+                <h3 class="project-title">企業査定プロジェクト</h3>
+            </div>
+            <p class="project-description">
+                学生目線で企業のリアルを知る。そして、学生の本音を企業に届ける。<br>
+                実際に企業に潜入して調査し、就活に使えるサイトとして公開していくプロジェクトです。<br>
+                企業と学生、お互いが本当に求めているものを知る橋渡し役を担います。
+            </p>
+            <div class="project-mission">
+                <div class="mission-item">
+                    <div class="mission-label">
+                        <svg style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 5px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#FF8C42"/>
+                            <circle cx="50" cy="50" r="30" fill="none" stroke="#fff" stroke-width="4"/>
+                            <circle cx="50" cy="50" r="15" fill="none" stroke="#fff" stroke-width="4"/>
+                            <circle cx="50" cy="50" r="5" fill="#fff"/>
+                        </svg>
+                        ミッション
+                    </div>
+                    <div class="mission-text">互いを知る、から始める。</div>
+                </div>
+                <div class="mission-item">
+                    <div class="mission-label">
+                        <svg style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 5px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#5EC4E8"/>
+                            <path d="M50 25 L55 45 L75 50 L55 55 L50 75 L45 55 L25 50 L45 45 Z" fill="#fff"/>
+                        </svg>
+                        こんな人におすすめ
+                    </div>
+                    <div class="mission-text">
+                        企業のリアルを知りたい / 就活に活かせる経験がほしい / インタビューやリサーチに興味がある
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">02</span>
+                <h3 class="project-title">イベント企画運営プロジェクト</h3>
+            </div>
+            <p class="project-description">
+                「こんなイベントがあったらいいな」を、自分たちの手で実現する。<br>
+                企画から当日の運営まで、ゼロからイベントを作り上げる経験ができます。
+            </p>
+            <div class="project-mission">
+                <div class="mission-item">
+                    <div class="mission-label">
+                        <svg style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 5px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#FF8C42"/>
+                            <path d="M30 30 L70 30 L70 45 L65 45 L65 70 L55 70 L55 50 L45 50 L45 70 L35 70 L35 45 L30 45 Z" fill="#fff"/>
+                            <circle cx="40" cy="25" r="3" fill="#fff"/>
+                            <circle cx="50" cy="20" r="3" fill="#fff"/>
+                            <circle cx="60" cy="25" r="3" fill="#fff"/>
+                        </svg>
+                        過去の実績
+                    </div>
+                    <div class="mission-text">
+                        <strong>安芸太田祭</strong> — 人口が少ない町に3,000人を呼んだ地方創生イベント<br>
+                        <strong>青春祭</strong> — コロナで失った青春を取り戻す、1夜限りの文化祭
+                    </div>
+                </div>
+                <div class="mission-item">
+                    <div class="mission-label">
+                        <svg style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 5px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#5EC4E8"/>
+                            <path d="M50 25 L55 45 L75 50 L55 55 L50 75 L45 55 L25 50 L45 45 Z" fill="#fff"/>
+                        </svg>
+                        こんな人におすすめ
+                    </div>
+                    <div class="mission-text">
+                        何かを作り上げる達成感がほしい / チームで動くのが好き / 人を楽しませたい
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-header">
+                <span class="project-number">03</span>
+                <h3 class="project-title">SNS運用代行プロジェクト</h3>
+            </div>
+            <p class="project-description">
+                広島市から依頼を受け、実際にInstagramを運用中。<br>
+                動画制作からSNS戦略まで、プロからフィードバックを受けながら実践できます。
+            </p>
+            <div class="project-mission">
+                <div class="mission-item">
+                    <div class="mission-label">
+                        <svg style="width: 24px; height: 24px; display: inline-block; vertical-align: middle; margin-right: 5px;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="#5EC4E8"/>
+                            <path d="M50 25 L55 45 L75 50 L55 55 L50 75 L45 55 L25 50 L45 45 Z" fill="#fff"/>
+                        </svg>
+                        こんな人におすすめ
+                    </div>
+                    <div class="mission-text">
+                        SNS運用に興味がある / 動画制作をやってみたい / クリエイティブなことが好き
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); margin-top: 3rem; line-height: 2;">
+            <strong>やりたいプロジェクトから参加OK</strong><br>
+            「まずは手伝いから」も大歓迎。複数プロジェクトの掛け持ちもできます。
+        </p>
+    </section>
+
+    <!-- 得られるもの -->
+    <section class="benefits">
+        <h2 class="section-title">ここで得られるもの</h2>
+        <p class="benefits-intro">
+            就活のガクチカだけじゃない。人生で使える力が身につく
+        </p>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <svg class="benefit-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="40" fill="#FFB380"/>
+                    <path d="M30 45 L40 55 L70 30" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+                </svg>
+                <h3 class="benefit-title">本質的な人間力</h3>
+                <p class="benefit-text">
+                    就活だけじゃない、人生で使える力。自分で考え、行動し、人と協力する。そんな本質的な力が身につきます。
+                </p>
+            </div>
+            <div class="benefit-card">
+                <svg class="benefit-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="40" fill="#A8E0F5"/>
+                    <path d="M50 20 L60 40 L80 45 L65 60 L68 80 L50 70 L32 80 L35 60 L20 45 L40 40 Z" fill="#fff"/>
+                </svg>
+                <h3 class="benefit-title">リアルな実践経験</h3>
+                <p class="benefit-text">
+                    企業訪問、イベント運営、SNS運用。教科書じゃ学べない、リアルなビジネスの現場を体験できます。
+                </p>
+            </div>
+            <div class="benefit-card">
+                <svg class="benefit-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="35" cy="40" r="15" fill="#FFB380"/>
+                    <circle cx="65" cy="40" r="15" fill="#A8E0F5"/>
+                    <circle cx="50" cy="65" r="15" fill="#FFB380"/>
+                    <line x1="42" y1="48" x2="50" y2="57" stroke="#FF8C42" stroke-width="3"/>
+                    <line x1="58" y1="48" x2="50" y2="57" stroke="#5EC4E8" stroke-width="3"/>
+                </svg>
+                <h3 class="benefit-title">多様な仲間</h3>
+                <p class="benefit-text">
+                    他大学、他分野の仲間と出会える。本気で楽しみながら成長できる環境です。
+                </p>
+            </div>
+            <div class="benefit-card">
+                <svg class="benefit-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="25" y="30" width="50" height="40" rx="5" fill="#A8E0F5"/>
+                    <rect x="30" y="35" width="40" height="5" fill="#fff"/>
+                    <rect x="30" y="45" width="40" height="5" fill="#fff"/>
+                    <rect x="30" y="55" width="25" height="5" fill="#fff"/>
+                </svg>
+                <h3 class="benefit-title">専門的な研修</h3>
+                <p class="benefit-text">
+                    本来、高額なプロの研修を無料で受けられるチャンスも。本質的な学びが待っています。
+                </p>
+            </div>
+            <div class="benefit-card">
+                <svg class="benefit-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="20" y="40" width="60" height="40" rx="5" fill="#FFB380"/>
+                    <rect x="30" y="20" width="40" height="30" rx="3" fill="#A8E0F5"/>
+                    <circle cx="50" cy="35" r="5" fill="#fff"/>
+                </svg>
+                <h3 class="benefit-title">企業とのつながり</h3>
+                <p class="benefit-text">
+                    プロジェクトを通して、社会人・企業との実践的なつながりが自然と生まれます。
+                </p>
+            </div>
+            <div class="benefit-card">
+                <svg class="benefit-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 20 L65 40 L90 45 L70 65 L75 90 L50 77 L25 90 L30 65 L10 45 L35 40 Z" fill="#FFB380"/>
+                    <circle cx="50" cy="50" r="15" fill="#fff"/>
+                </svg>
+                <h3 class="benefit-title">可能性は無限大</h3>
+                <p class="benefit-text">
+                    本気で取り組めば、起業だって夢じゃない。あなたの可能性を最大限に引き出せる環境です。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- メンバーの声 -->
+    <section class="voices">
+        <h2 class="section-title">メンバーの声</h2>
+        
+        <div class="voice-card">
+            <p class="voice-quote">
+                ここに入って、自分が成長できる未来が見えた。<br>
+                今も毎日、成長を実感してます。
+            </p>
+            <p class="voice-author">— まっさ（代表）</p>
+        </div>
+
+        <div class="voice-card">
+            <p class="voice-quote">
+                他大学、いろんな分野の人と出会えて、<br>
+                本気で楽しみながら成長できた。<br>
+                ここでしか得られない経験だと思う。
+            </p>
+            <p class="voice-author">— きらり</p>
+        </div>
+
+        <div class="voice-card">
+            <p class="voice-quote">
+                研修で学んだことは、就活だけじゃなくて人生で使える本質的なもの。<br>
+                イベントを作り上げた達成感は、今でも忘れられない。
+            </p>
+            <p class="voice-author">— プロジェクトメンバー</p>
+        </div>
+    </section>
+
+    <!-- 活動写真ギャラリー -->
+    <section class="gallery">
+        <h2 class="section-title">活動の様子</h2>
+        <p class="gallery-intro">
+            安芸太田祭、青春祭…みんなで作り上げたイベントの一部
+        </p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://drive.google.com/uc?export=view&id=1Ce6Kx6dOXIbgcmWqGN2AQZaHMK4SdFOQ" alt="安芸太田祭">
+            </div>
+            <div class="gallery-item">
+                <img src="https://drive.google.com/uc?export=view&id=1c4AHKMDOg1pSMMGRoaTtVoL7WtheuT0s" alt="青春祭">
+            </div>
+            <div class="gallery-item">
+                <img src="https://drive.google.com/uc?export=view&id=1BMW35SzMPktQWJmiVQkX0FiGaRRISopD" alt="青春祭">
+            </div>
+            <div class="gallery-item">
+                <img src="https://drive.google.com/uc?export=view&id=1i3dFxlxWwvl9dx9iwaV1kVZAWW_HV8sc" alt="青春祭">
+            </div>
+            <div class="gallery-item">
+                <img src="https://drive.google.com/uc?export=view&id=1ebITLX1oreB5RC2XPjUtwTcFSa1RhI2l" alt="青春祭">
+            </div>
+            <div class="gallery-item">
+                <img src="https://drive.google.com/uc?export=view&id=1xavybQ9aH8ub5yGOvnNUEYAtwFFipwtm" alt="メンバー集合写真">
+            </div>
+        </div>
+    </section>
+
+    <!-- 参加の流れ -->
+    <section class="flow" id="flow">
+        <h2 class="section-title">参加までの流れ</h2>
+        <div class="flow-steps">
+            <div class="flow-step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>面談を予約</h3>
+                    <p>下のボタンから、あなたの都合の良い日時で面談を予約。所要時間は30分ほどです。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>カジュアルに話そう</h3>
+                    <p>堅い面接じゃありません。どんなことに興味がある？何をやってみたい？一緒に考えながら、あなたに合ったプロジェクトを見つけます。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>活動スタート</h3>
+                    <p>面談後、すぐに活動開始もOK。プロジェクトメンバー限定の交流会からスタートするのもあり。自分のペースで始められます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="faq">
+        <h2 class="section-title">よくある質問</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-q">Q</span>
+                <span>スキルや経験がなくても大丈夫？</span>
+            </div>
+            <p class="faq-answer">
+                もちろん大丈夫です。「変わりたい」という気持ちさえあれば、スキルも経験も必要ありません。みんな最初は初心者からスタートしています。
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-q">Q</span>
+                <span>学年制限はある？</span>
+            </div>
+            <p class="faq-answer">
+                ありません。大学1年生も、高校生メンバーもいます。学年関係なく、一緒に成長できる環境です。
+            </p>
+        </div>
+
+<div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-q">Q</span>
+                <span>お金はかかる？</span>
+            </div>
+            <p class="faq-answer">
+                完全無料です。本来、高額なプロの研修も、WELMIのサポートにより学生は無料で受けられます。
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-q">Q</span>
+                <span>複数のプロジェクトに参加できる？</span>
+            </div>
+            <p class="faq-answer">
+                もちろん可能です。自分のキャパと相談しながら、興味のあるプロジェクトに挑戦してください。
+            </p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="faq-q">Q</span>
+                <span>面談って何を話すの？</span>
+            </div>
+            <p class="faq-answer">
+                「どんなことに興味がある？」「何をやってみたい？」といった、気軽な質問です。あなたに合ったプロジェクトを一緒に見つけるための時間なので、リラックスして話してください。
+            </p>
+        </div>
+    </section>
+
+    <!-- 最終CTA -->
+    <section class="final-cta">
+        <h2>いまの自分から、<br>一歩前へ</h2>
+        <p>その気持ちがあれば、もう十分。一緒に始めよう</p>
+        <div class="cta-buttons">
+            <a href="https://timerex.net/s/nukui.event.staff_92c0/46b227c2/" class="cta-primary">面談を予約する（30分）</a>
+            <a href="https://line.me/R/ti/p/@810ihnib" class="cta-secondary">公式LINEに戻る</a>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2025 #ともあゆ All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
